@@ -1,0 +1,76 @@
+Booking.com
+
+&lt;div class="public_transport_tooltip"&gt;
+&lt;strong&gt;近大眾運輸&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;距離Karasuma不到450 m&lt;/li&gt;
+
+span class="sr-hotel__name" data-et-click="customGoal:OLAQMJbQPLbOMFcPRHe:1" data-et-mouseenter="customGoal:OLAQMJbQPLbOMFcPRHe:2">
+Mitsui Garden Hotel Kyoto Shijo（三井花園飯店京都四條）
+</span>
+
+<span class="invisible_spoken">4 星級飯店</span></i>
+
+#hotelTmpl" rel="noopener" target="_blank" title="
+下京區
+是寺廟、觀光和文化的絕佳選擇 &amp;ndash; 顯示地圖">
+ 下京區, 京都【烏丸】
+</a>
+
+" data-extra-class="review-breakdown-tooltip" data-intangible="" data-placement="top" 
+data-ratings="住宿地點;8.2;82%|清潔程度;8.8;88%|性價比;7.8;78%|舒適程度;8.2;82%">
+
+####  evaluation badge
+
+<span class="review-score-widget__text">
+非常好
+</span>
+<span class="review-score-badge">
+8.3
+</span>
+
+<span class="price_for_x_nights_format">
+4 晚房價
+</span>
+
+<span class="room_link" data-et-view="
+">
+雙人間
+<div class="sr_max_occupancy sr_max_occ--inline">
+
+###  $$$$$$$
+
+<strong aria-label="4 晚房價: TWD 22,059." class=" price availprice no_rack_rate " data-et-view="OTfdASFOLCEBJFUC:1">
+<b>
+TWD 22,059
+</b>
+</strong>
+
+<sup class="sr_room_reinforcement">
+免費取消
+</sup>
+<sup class="sr_room_reinforcement" data-et-view="ZOOeGGHUFefBQJbLbOMFcWe:1">
+無需訂金
+</sup>
+
+
+####   lat; long
+<a class=" jq_tooltip district_link visited_link " data-coords="135.755084753036,35.0030176761417" data-et-click="
+
+
+
+
+
+
+
+#### 直接開啟
+
+https://www.booking.com/searchresults.zh-tw.html?label=gen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaOcBiAEBmAEwuAEGyAEM2AED6AEBkgIBeagCAw&sid=4996667e149bfae490c17f2eb37eafa9&sb=1&src=index&src_elem=sb&error_url=https%3A%2F%2Fwww.booking.com%2Findex.zh-tw.html%3Flabel%3Dgen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaOcBiAEBmAEwuAEGyAEM2AED6AEBkgIBeagCAw%3Bsid%3D4996667e149bfae490c17f2eb37eafa9%3Bsb_price_type%3Dtotal%26%3B&ss=%E4%BA%AC%E9%83%BD&ssne=%E4%BA%AC%E9%83%BD&ssne_untouched=%E4%BA%AC%E9%83%BD&dest_id=-235402&dest_type=city&checkin_year=2017&checkin_month=10&checkin_monthday=7&checkout_year=2017&checkout_month=10&checkout_monthday=11&room1=A%2CA&no_rooms=1&group_adults=2&group_children=0
+
+#### 有資訊的URL (無法用browser開啟)
+
+https://www.booking.com/searchresults.zh-tw.html?label=gen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaOcBiAEBmAEwuAEGyAEM2AED6AEBkgIBeagCAw&sid=4996667e149bfae490c17f2eb37eafa9&checkin_month=10&checkin_monthday=7&checkin_year=2017&checkout_month=10&checkout_monthday=11&checkout_year=2017&class_interval=1&dest_id=-235402&dest_type=city&dtdisc=0&group_adults=2&group_children=0&inac=0&index_postcard=0&label_click=undef&no_rooms=1&postcard=0&raw_dest_type=city&room1=A%2CA&sb_price_type=total&src=index&src_elem=sb&ss=%E4%BA%AC%E9%83%BD&ss_all=0&ssb=empty&sshis=0&ssne=%E4%BA%AC%E9%83%BD&ssne_untouched=%E4%BA%AC%E9%83%BD&rows=50&offset=50&sr_ajax=1&b_gtt=dLYAeZFVJfNTBdAHUdHPGZDfIfVNASUcbTYWPJLO&_=1501678454525
+
+#### 去掉AJAX後URL (可用browser開啟)
+
+https://www.booking.com/searchresults.zh-tw.html?label=gen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaOcBiAEBmAEwuAEGyAEM2AED6AEBkgIBeagCAw&sid=4996667e149bfae490c17f2eb37eafa9&checkin_month=10&checkin_monthday=7&checkin_year=2017&checkout_month=10&checkout_monthday=11&checkout_year=2017&class_interval=1&dest_id=-235402&dest_type=city&dtdisc=0&group_adults=2&group_children=0&inac=0&index_postcard=0&label_click=undef&no_rooms=1&postcard=0&raw_dest_type=city&room1=A%2CA&sb_price_type=total&src=index&src_elem=sb&ss=%E4%BA%AC%E9%83%BD&ss_all=0&ssb=empty&sshis=0&ssne=%E4%BA%AC%E9%83%BD&ssne_untouched=%E4%BA%AC%E9%83%BD&rows=50&offset=50
