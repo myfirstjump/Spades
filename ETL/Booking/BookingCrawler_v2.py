@@ -9,7 +9,7 @@ import os
 start_time = time.time()
 
 # Settings
-surveyRange = 180
+surveyRange = 190
 travelPeriod = 4
 
 # Date List 
@@ -155,9 +155,9 @@ for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
             #print("==========================")
             #print(dictBook)
             HotelList.append(dictBook)
-#         time.sleep(1)
+            time.sleep(1)
 #     print("saving dictBook...")
-#     os.makedirs('D:\\DATA\\data-{}'.format(time.localtime()))
-     with open('D:\\DATA\\data-grabTime-{}\\BookingList-from-{}-to-{}.txt'.format(time.localtime()[1:4], timeList[i-1][0], timeList[i-1][1]), 'w', encoding = 'UTF-8') as f:
+    os.makedirs('D:\\DATA\\data-{}'.format(time.localtime()[1:4]))
+    with open('D:\\DATA\\data-grabTime-{}\\BookingList-from-{}-to-{}.txt'.format(                           time.localtime()[1:4], timeList[i-1][0], timeList[i-1][1]), 'w', encoding = 'UTF-8') as f:
          f.write(HotelList)    
- print("Cost time: " + str(time.time()-start_time-2*sum(turnPage)))
+print("Cost time: " + str(time.time()-start_time-2*sum(turnPage)))
