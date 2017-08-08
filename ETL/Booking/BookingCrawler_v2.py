@@ -71,11 +71,13 @@ for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
     # append to lists
     pagesList.append(numHotel)
     turnPageList.append(turnPage)
-    
-    # for each period (ex. 10/7 ~ 10/11), grab the hotelList information
 
-HotelList = []
+
+# for each period (ex. 10/7 ~ 10/11), grab the hotelList information
+
+
 for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
+    HotelList = [] # This list store and reflash by each travelPeriod
     url = "https://www.booking.com/searchresults.zh-tw.html?aid=304142&label=gen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaOcBiAEBmAEwuAEGyAEM2AED6AEBkgIBeagCAw&sid=25f3195cbf76726e8ffac861269a0d24&checkin_month="+str(checkinM[i-1])+"&checkin_monthday="+str(checkinD[i-1])+"&checkin_year="+str(checkinY[i-1])+"&checkout_month="+str(checkoutM[i-1])+"&checkout_monthday="+str(checkoutD[i-1])+"&checkout_year="+str(checkoutY[i-1])+"&class_interval=1&dest_id=-235402&dest_type=city&group_adults=2&group_children=0&label_click=undef&no_rooms=1&raw_dest_type=city&room1=A%2CA&sb_price_type=total&src=index&src_elem=sb&ss="+str(location)+"&ssb=empty&ssne="+str(location)+"&ssne_untouched="+str(location)+"&rows=50"###+"&sr_ajax=1&b_gtt=dLYAeZFVJfNTBdAHUdPHUBSSUVJfcbWYaNLDRCAET&_=1501050897864"
     res = requests.get(url, headers = headers, cookies = cookie)
     soup = BeautifulSoup(res.text, 'lxml')
@@ -156,6 +158,6 @@ for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
 #         time.sleep(1)
 #     print("saving dictBook...")
 #     os.makedirs('D:\\DATA\\data-{}'.format(time.localtime()))
-#     with open('D:\\DATA\\data-{}\\BookingList-from-{}-to-{}.txt'.format(time.localtime(), timeList[i-1][0], timeList[i-1][1]), 'w', encoding = 'UTF-8') as f:
-#         f.write(str(dictBook))    
+     with open('D:\\DATA\\data-grabTime-{}\\BookingList-from-{}-to-{}.txt'.format(time.localtime()[1:4], timeList[i-1][0], timeList[i-1][1]), 'w', encoding = 'UTF-8') as f:
+         f.write(HotelList)    
  print("Cost time: " + str(time.time()-start_time-2*sum(turnPage)))
