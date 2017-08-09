@@ -45,7 +45,7 @@ for i in timeList:
 # cookies
 # location
 headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'}
-cookie = {"Cookie":"zz_cook_tms_seg1=1; zz_cook_tms_seg3=7; _gat=1; header_signin_prompt=1; _ga=GA1.2.2061587162.1502107968; _gid=GA1.2.1368567341.1502207499; vpmss=1; BJS=-; utag_main=v_id:015dbc9ca2c900457102ac7642380407300bf06b00978$_sn:3$_ss:0$_st:1502209330403$4split:0$4split2:0$ses_id:1502207499368%3Bexp-session$_pn:2%3Bexp-session; zz_cook_tms_ed=1; bkng=11UmFuZG9tSVYkc2RlIyh9YfDNyGw8J7nzPnUG3Pr%2Bfv4q%2B9bLazBCalm3TAWoGMhoYgMOf0ZOfk1%2BI7umU98E%2B3dYurtPpy5%2BtAs6MLqAgwnjcsaP8FHbHQTv0oYODpE3msrUIyWOgJt1iyMa7spZzfjyOl1xnXXpiSjbArMsfEHQFOBmiBO8AJz62nARE1ykA2Pclm%2BNDQmmOVZEJba%2BgA%3D%3D; lastSeen=0"}
+cookie = {"Cookie":"zz_cook_tms_seg1=2; zz_cook_tms_seg3=8; vpmss=1; _gat=1; header_signin_prompt=1; _ga=GA1.2.771830251.1501676071; _gid=GA1.2.1896765923.1502154343; BJS=-; utag_main=v_id:015da2de69b200b09a95a293b1480407200b206a00bd0$_sn:8$_ss:0$_st:1502279303598$4split:0$4split2:2$ses_id:1502277488997%3Bexp-session$_pn:2%3Bexp-session; zz_cook_tms_ed=1; bkng=11UmFuZG9tSVYkc2RlIyh9YfDNyGw8J7nzPnUG3Pr%2Bfv5iyz1NtopREJdTsCqdrpXgI66sd%2FjfFIU4YDfE%2Fahu9kHyQORg%2FTWwIOqyrnm3%2B8BZ9Rbn7qZqzi9yiPCHkpZR1TgIjwU4scG4SoRLU%2Bz3%2FRNWPrPaMZpsqPpzM%2BIfjU%2F%2B7%2BGLeLzR8gfQwaoorp2lywU%2B9BY0RVNtguDYHNEpzg%3D%3D; lastSeen=0"}
 location = '京都'
 
 # Pages amount for each travel period.  
@@ -157,7 +157,8 @@ for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
             HotelList.append(dictBook)
             time.sleep(1)
 #     print("saving dictBook...")
-    os.makedirs('D:\\DATA\\data-grabTime-{}'.format(time.localtime()[1:4]))
+    if os.path.exists('D:\\DATA\\data-grabTime-{}'.format(time.localtime()[1:4])) == False:
+        os.makedirs('D:\\DATA\\data-grabTime-{}'.format(time.localtime()[1:4]))
     with open('D:\\DATA\\data-grabTime-{}\\BookingList-from-{}-to-{}.txt'.format(                           time.localtime()[1:4], timeList[i-1][0], timeList[i-1][1]), 'w', encoding = 'UTF-8') as f:
-         f.write(HotelList)    
-print("Cost time: " + str(time.time()-start_time-2*sum(turnPage)))
+         f.write(str(HotelList).strip('[').strip(']'))   
+print("Cost time: " + str(time.time()-start_time))
