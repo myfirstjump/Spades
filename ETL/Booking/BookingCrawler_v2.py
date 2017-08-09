@@ -157,7 +157,7 @@ for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
             HotelList.append(dictBook)
             time.sleep(1)
 #     print("saving dictBook...")
-    os.makedirs('D:\\DATA\\data-{}'.format(time.localtime()[1:4]))
+    os.makedirs('D:\\DATA\\data-grabTime-{}'.format(time.localtime()[1:4]))
     with open('D:\\DATA\\data-grabTime-{}\\BookingList-from-{}-to-{}.txt'.format(                           time.localtime()[1:4], timeList[i-1][0], timeList[i-1][1]), 'w', encoding = 'UTF-8') as f:
          f.write(HotelList)    
 print("Cost time: " + str(time.time()-start_time-2*sum(turnPage)))
