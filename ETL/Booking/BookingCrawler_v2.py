@@ -120,8 +120,8 @@ for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
                 price = "".join(re.findall("TWD\s(\w+,\w+$)", target)[0].split(","))
                 dictBook["Price"] = int(price)/4
 # Check in/out time
-            dictBook["CheckIn"] = "{}-{}-{}-15-00".format(timeList[0][0].year, timeList[0][0].month, timeList[0][0].day)
-            dictBook["CheckOut"] = "{}-{}-{}-11-00".format(timeList[0][1].year, timeList[0][1].month, timeList[0][1].day)
+            dictBook["CheckIn"] = "{}-{}-{}-15-00".format(timeList[i-1][0].year, timeList[i-1][0].month, timeList[i-1][0].day)
+            dictBook["CheckOut"] = "{}-{}-{}-11-00".format(timeList[i-1][1].year, timeList[i-1][1].month, timeList[i-1][1].day)
 # Latitude, Longitude
             coor1 = item.findAll(lambda y: y.get('data-coords'))[1] 
             coor2 = re.findall('data-coords="(135[\w|,|\.]+)"', str(coor1))
