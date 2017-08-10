@@ -5,11 +5,12 @@ from bs4 import BeautifulSoup
 import re
 import time
 import os
+import json
 
 start_time = time.time()
 
 # Settings
-surveyRange = 190
+surveyRange = 180
 travelPeriod = 4
 
 # Date List 
@@ -24,7 +25,7 @@ def getDateList(dt = date.today(), ran = surveyRange, period = travelPeriod):
         start = start + timedelta(days = 1)
         end = end + timedelta(days = 1) 
     return timeList
-timeList = getDateList()
+timeList = getDateList() # from dt = date(2017, 12 ,31)
 
 # Date List components
 checkinM = []
@@ -45,7 +46,7 @@ for i in timeList:
 # cookies
 # location
 headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'}
-cookie = {"Cookie":"zz_cook_tms_seg1=2; zz_cook_tms_seg3=8; vpmss=1; _gat=1; header_signin_prompt=1; _ga=GA1.2.771830251.1501676071; _gid=GA1.2.1896765923.1502154343; BJS=-; utag_main=v_id:015da2de69b200b09a95a293b1480407200b206a00bd0$_sn:8$_ss:0$_st:1502279303598$4split:0$4split2:2$ses_id:1502277488997%3Bexp-session$_pn:2%3Bexp-session; zz_cook_tms_ed=1; bkng=11UmFuZG9tSVYkc2RlIyh9YfDNyGw8J7nzPnUG3Pr%2Bfv5iyz1NtopREJdTsCqdrpXgI66sd%2FjfFIU4YDfE%2Fahu9kHyQORg%2FTWwIOqyrnm3%2B8BZ9Rbn7qZqzi9yiPCHkpZR1TgIjwU4scG4SoRLU%2Bz3%2FRNWPrPaMZpsqPpzM%2BIfjU%2F%2B7%2BGLeLzR8gfQwaoorp2lywU%2B9BY0RVNtguDYHNEpzg%3D%3D; lastSeen=0"}
+cookie = {"Cookie":"zz_cook_tms_seg1=2; zz_cook_tms_seg3=8; vpmss=1; has_preloaded=1; _gat=1; header_signin_prompt=1; _ga=GA1.2.771830251.1501676071; _gid=GA1.2.1896765923.1502154343; BJS=-; utag_main=v_id:015da2de69b200b09a95a293b1480407200b206a00bd0$_sn:9$_ss:0$_st:1502342742673$4split:0$4split2:2$ses_id:1502340934781%3Bexp-session$_pn:2%3Bexp-session; zz_cook_tms_ed=1; bkng=11UmFuZG9tSVYkc2RlIyh9Yaa29%2F3xUOLbiKbS0JOgDBL0fnqjd4vBkPcI8rkGKzraI1suV7nd3XzAVU3u4Xj1lbHkdMgnvM8eZTMMJRnu%2B%2BZcZjRbYIMEBjqo0avzmRl9k1LkfZZbKA%2BwUGHQmNGg6nxYFeKrIZPn0sVzmTaMLLz0M5NoM2kCXMpBOw3S4AHu7OrBOAPFK%2Fw%3D; lastSeen=0"}
 location = '京都'
 
 # Pages amount for each travel period.  
@@ -56,6 +57,7 @@ numHotelList = []
 turnPageList = []
 for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
     # url位址為XHR文件中的searchresults，去除AJAX部分
+    print("loading period info: " + str(i))
     url = "https://www.booking.com/searchresults.zh-tw.html?aid=304142&label=gen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaOcBiAEBmAEwuAEGyAEM2AED6AEBkgIBeagCAw&sid=25f3195cbf76726e8ffac861269a0d24&checkin_month="+str(checkinM[i-1])+"&checkin_monthday="+str(checkinD[i-1])+"&checkin_year="+str(checkinY[i-1])+"&checkout_month="+str(checkoutM[i-1])+"&checkout_monthday="+str(checkoutD[i-1])+"&checkout_year="+str(checkoutY[i-1])+"&class_interval=1&dest_id=-235402&dest_type=city&group_adults=2&group_children=0&label_click=undef&no_rooms=1&raw_dest_type=city&room1=A%2CA&sb_price_type=total&src=index&src_elem=sb&ss="+str(location)+"&ssb=empty&ssne="+str(location)+"&ssne_untouched="+str(location)+"&rows=50"###+"&sr_ajax=1&b_gtt=dLYAeZFVJfNTBdAHUdPHUBSSUVJfcbWYaNLDRCAET&_=1501050897864"
     res = requests.get(url, headers = headers, cookies = cookie)
     soup = BeautifulSoup(res.text, 'lxml')
@@ -81,9 +83,10 @@ for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
     url = "https://www.booking.com/searchresults.zh-tw.html?aid=304142&label=gen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaOcBiAEBmAEwuAEGyAEM2AED6AEBkgIBeagCAw&sid=25f3195cbf76726e8ffac861269a0d24&checkin_month="+str(checkinM[i-1])+"&checkin_monthday="+str(checkinD[i-1])+"&checkin_year="+str(checkinY[i-1])+"&checkout_month="+str(checkoutM[i-1])+"&checkout_monthday="+str(checkoutD[i-1])+"&checkout_year="+str(checkoutY[i-1])+"&class_interval=1&dest_id=-235402&dest_type=city&group_adults=2&group_children=0&label_click=undef&no_rooms=1&raw_dest_type=city&room1=A%2CA&sb_price_type=total&src=index&src_elem=sb&ss="+str(location)+"&ssb=empty&ssne="+str(location)+"&ssne_untouched="+str(location)+"&rows=50"###+"&sr_ajax=1&b_gtt=dLYAeZFVJfNTBdAHUdPHUBSSUVJfcbWYaNLDRCAET&_=1501050897864"
     res = requests.get(url, headers = headers, cookies = cookie)
     soup = BeautifulSoup(res.text, 'lxml')
-    print("=="*50)
+    print("="*50)
     print("period: " + str(i))
     for page in range(1, turnPageList[i-1]+1): # page = 1 ~ turnPage
+        time.sleep(1)
         print("this is page: " + str(page) + " from total " + str(turnPageList[i-1]))
         offset = (page-1)*50  # offset: from index of hotel(in below url)
         url2 = "https://www.booking.com/searchresults.zh-tw.html?label=gen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaOcBiAEBmAEwuAEGyAEM2AED6AEBkgIBeagCAw&sid=4996667e149bfae490c17f2eb37eafa9&checkin_month="+str(checkinM[i-1])+"&checkin_monthday="+str(checkinD[i-1])+"&checkin_year="+str(checkinY[i-1])+"&checkout_month="+str(checkoutM[i-1])+"&checkout_monthday="+str(checkoutD[i-1])+"&checkout_year="+str(checkoutY[i-1])+"&class_interval=1&dest_id=-235402&dest_type=city&dtdisc=0&group_adults=2&group_children=0&inac=0&index_postcard=0&label_click=undef&no_rooms=1&postcard=0&raw_dest_type=city&room1=A%2CA&sb_price_type=total&src=index&src_elem=sb&ss="+str(location)+"&ss_all=0&ssb=empty&sshis=0&ssne="+str(location)+"&ssne_untouched="+str(location)+"&rows=50&offset="+ str(offset)### + "&sr_ajax=1&b_gtt=dLYAeZFVJfNTBdAHUdHPGZDfIfVNASUcbTYWPJLO&_=1501678454525"        
@@ -104,12 +107,12 @@ for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
                 #print(re.findall("\\n[\w|\s|\&|\(|\)|\-|,|']+（([\w|（|）|・]+)）", HotelName)[0])
                 dictBook["ChiName"] = re.findall("\\n[\w|\s|\&|\(|\)|\-|,|']+（([\w|（|）|・]+)）", HotelName)[0]
                 #print(re.findall("\\n([\w|\s|\&|\(|\)|\-|,|'|・]+)（", HotelName)[0])
-                dictBook["EngName"] = re.findall("\\n([\w|\s|\&|\(|\)|\-|,|'|・]+)（", HotelName)[0]
+                dictBook["EngName"] = re.findall("\\n([\w|\s|\&|\(|\)|\-|,|'|・]+)（", HotelName)[0].upper()
             else:
                 #print("NA")
                 dictBook["ChiName"] = "NA"
                 #print(HotelName.strip())
-                dictBook["EngName"] = HotelName.strip()
+                dictBook["EngName"] = HotelName.strip().upper()
 # Price
             if "TWD" not in item.select('.sr_rooms_table_block')[0].text: 
                 #print("--------> " + " Sell Out!!!")
@@ -155,10 +158,11 @@ for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
             #print("==========================")
             #print(dictBook)
             HotelList.append(dictBook)
-            time.sleep(1)
+        HotelList2 = json.dumps(HotelList, ensure_ascii = False)
+            #time.sleep(1)
 #     print("saving dictBook...")
     if os.path.exists('D:\\DATA\\data-grabTime-{}'.format(time.localtime()[1:4])) == False:
         os.makedirs('D:\\DATA\\data-grabTime-{}'.format(time.localtime()[1:4]))
     with open('D:\\DATA\\data-grabTime-{}\\BookingList-from-{}-to-{}.txt'.format(                           time.localtime()[1:4], timeList[i-1][0], timeList[i-1][1]), 'w', encoding = 'UTF-8') as f:
-         f.write(str(HotelList).strip('[').strip(']'))   
+         f.write(HotelList2.strip('[').strip(']'))   
 print("Cost time: " + str(time.time()-start_time))
