@@ -10,8 +10,10 @@ import json
 start_time = time.time()
 
 # Settings
-surveyRange = 180
-travelPeriod = 4
+surveyRange = 145
+travelPeriod = 1
+adultNumber = 2
+roomNumber = 1
 
 # Date List 
 # args: start date, survey range, travel period(days)
@@ -25,7 +27,7 @@ def getDateList(dt = date.today(), ran = surveyRange, period = travelPeriod):
         start = start + timedelta(days = 1)
         end = end + timedelta(days = 1) 
     return timeList
-timeList = getDateList() # from dt = date(2017, 12 ,31)
+timeList = getDateList(dt = date(2018, 8 ,9)) # from dt = date(2017, 12 ,31)
 
 # Date List components
 checkinM = []
@@ -46,7 +48,7 @@ for i in timeList:
 # cookies
 # location
 headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'}
-cookie = {"Cookie":"zz_cook_tms_seg1=2; zz_cook_tms_seg3=8; vpmss=1; has_preloaded=1; _gat=1; header_signin_prompt=1; _ga=GA1.2.771830251.1501676071; _gid=GA1.2.1896765923.1502154343; BJS=-; utag_main=v_id:015da2de69b200b09a95a293b1480407200b206a00bd0$_sn:9$_ss:0$_st:1502342742673$4split:0$4split2:2$ses_id:1502340934781%3Bexp-session$_pn:2%3Bexp-session; zz_cook_tms_ed=1; bkng=11UmFuZG9tSVYkc2RlIyh9Yaa29%2F3xUOLbiKbS0JOgDBL0fnqjd4vBkPcI8rkGKzraI1suV7nd3XzAVU3u4Xj1lbHkdMgnvM8eZTMMJRnu%2B%2BZcZjRbYIMEBjqo0avzmRl9k1LkfZZbKA%2BwUGHQmNGg6nxYFeKrIZPn0sVzmTaMLLz0M5NoM2kCXMpBOw3S4AHu7OrBOAPFK%2Fw%3D; lastSeen=0"}
+cookie = {"Cookie":"zz_cook_tms_seg1=1; zz_cook_tms_seg3=5; _gat=1; header_signin_prompt=1; _ga=GA1.2.2103747874.1502535684; _gid=GA1.2.1884370949.1502736340; vpmss=1; BJS=-; utag_main=v_id:015dd61b0ede00186d65097599510407100b206900bd0$_sn:2$_ss:0$_st:1502738181270$4split:0$4split2:2$ses_id:1502736340219%3Bexp-session$_pn:2%3Bexp-session; zz_cook_tms_ed=1; lastSeen=0; bkng=11UmFuZG9tSVYkc2RlIyh9Yaa29%2F3xUOLbwcLxQQ4VaCrlaBllvSuiyEd4PaeC1%2FxQ0nVnJlDB5EktivXTUaa4fpXXIxGaD4JltGQggf3c15n8LG3yP7qLpzW%2FExEHca7ziNOA0okwuv0Ch4dTN0%2FhRau4PAXEOWc7V%2BCE6q9v%2FsHdg9nSbvehVygf8wL2atYvTvrX3njv9Xg%3D"}
 location = '京都'
 
 # Pages amount for each travel period.  
@@ -58,7 +60,7 @@ turnPageList = []
 for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
     # url位址為XHR文件中的searchresults，去除AJAX部分
     print("loading period info: " + str(i))
-    url = "https://www.booking.com/searchresults.zh-tw.html?aid=304142&label=gen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaOcBiAEBmAEwuAEGyAEM2AED6AEBkgIBeagCAw&sid=25f3195cbf76726e8ffac861269a0d24&checkin_month="+str(checkinM[i-1])+"&checkin_monthday="+str(checkinD[i-1])+"&checkin_year="+str(checkinY[i-1])+"&checkout_month="+str(checkoutM[i-1])+"&checkout_monthday="+str(checkoutD[i-1])+"&checkout_year="+str(checkoutY[i-1])+"&class_interval=1&dest_id=-235402&dest_type=city&group_adults=2&group_children=0&label_click=undef&no_rooms=1&raw_dest_type=city&room1=A%2CA&sb_price_type=total&src=index&src_elem=sb&ss="+str(location)+"&ssb=empty&ssne="+str(location)+"&ssne_untouched="+str(location)+"&rows=50"###+"&sr_ajax=1&b_gtt=dLYAeZFVJfNTBdAHUdPHUBSSUVJfcbWYaNLDRCAET&_=1501050897864"
+    url = "https://www.booking.com/searchresults.zh-tw.html?aid=304142&label=gen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaOcBiAEBmAEwuAEGyAEM2AED6AEBkgIBeagCAw&sid=25f3195cbf76726e8ffac861269a0d24&checkin_month="+str(checkinM[i-1])+"&checkin_monthday="+str(checkinD[i-1])+"&checkin_year="+str(checkinY[i-1])+"&checkout_month="+str(checkoutM[i-1])+"&checkout_monthday="+str(checkoutD[i-1])+"&checkout_year="+str(checkoutY[i-1])+"&class_interval=1&dest_id=-235402&dest_type=city&group_adults="+str(adultNumber)+"&group_children=0&label_click=undef&no_rooms="+str(roomNumber)+"&raw_dest_type=city&room1=A%2CA&sb_price_type=total&src=index&src_elem=sb&ss="+str(location)+"&ssb=empty&ssne="+str(location)+"&ssne_untouched="+str(location)+"&rows=50"###+"&sr_ajax=1&b_gtt=dLYAeZFVJfNTBdAHUdPHUBSSUVJfcbWYaNLDRCAET&_=1501050897864"
     res = requests.get(url, headers = headers, cookies = cookie)
     soup = BeautifulSoup(res.text, 'lxml')
     
@@ -80,7 +82,7 @@ for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
 
 for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
     HotelList = [] # This list store and reflash by each travelPeriod
-    url = "https://www.booking.com/searchresults.zh-tw.html?aid=304142&label=gen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaOcBiAEBmAEwuAEGyAEM2AED6AEBkgIBeagCAw&sid=25f3195cbf76726e8ffac861269a0d24&checkin_month="+str(checkinM[i-1])+"&checkin_monthday="+str(checkinD[i-1])+"&checkin_year="+str(checkinY[i-1])+"&checkout_month="+str(checkoutM[i-1])+"&checkout_monthday="+str(checkoutD[i-1])+"&checkout_year="+str(checkoutY[i-1])+"&class_interval=1&dest_id=-235402&dest_type=city&group_adults=2&group_children=0&label_click=undef&no_rooms=1&raw_dest_type=city&room1=A%2CA&sb_price_type=total&src=index&src_elem=sb&ss="+str(location)+"&ssb=empty&ssne="+str(location)+"&ssne_untouched="+str(location)+"&rows=50"###+"&sr_ajax=1&b_gtt=dLYAeZFVJfNTBdAHUdPHUBSSUVJfcbWYaNLDRCAET&_=1501050897864"
+    url = "https://www.booking.com/searchresults.zh-tw.html?aid=304142&label=gen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaOcBiAEBmAEwuAEGyAEM2AED6AEBkgIBeagCAw&sid=25f3195cbf76726e8ffac861269a0d24&checkin_month="+str(checkinM[i-1])+"&checkin_monthday="+str(checkinD[i-1])+"&checkin_year="+str(checkinY[i-1])+"&checkout_month="+str(checkoutM[i-1])+"&checkout_monthday="+str(checkoutD[i-1])+"&checkout_year="+str(checkoutY[i-1])+"&class_interval=1&dest_id=-235402&dest_type=city&group_adults="+str(adultNumber)+"&group_children=0&label_click=undef&no_rooms="+str(roomNumber)+"&raw_dest_type=city&room1=A%2CA&sb_price_type=total&src=index&src_elem=sb&ss="+str(location)+"&ssb=empty&ssne="+str(location)+"&ssne_untouched="+str(location)+"&rows=50"###+"&sr_ajax=1&b_gtt=dLYAeZFVJfNTBdAHUdPHUBSSUVJfcbWYaNLDRCAET&_=1501050897864"
     res = requests.get(url, headers = headers, cookies = cookie)
     soup = BeautifulSoup(res.text, 'lxml')
     print("="*50)
@@ -120,8 +122,10 @@ for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
             else:
                 target = item.select('.sr_rooms_table_block')[0].select('strong > b')[0].text
                 #print("--------> " + target)
-                price = "".join(re.findall("TWD\s(\w+,\w+$)", target)[0].split(","))
-                dictBook["Price"] = int(price)/4
+                target2 = target.replace(",", "")
+                #print(target2)
+                price = re.findall("TWD\s(\w+$)", target2)[0]
+                dictBook["Price"] = int(price)/travelPeriod
 # Check in/out time
             dictBook["CheckIn"] = "{}-{}-{}-15-00".format(timeList[i-1][0].year, timeList[i-1][0].month, timeList[i-1][0].day)
             dictBook["CheckOut"] = "{}-{}-{}-11-00".format(timeList[i-1][1].year, timeList[i-1][1].month, timeList[i-1][1].day)
@@ -161,8 +165,8 @@ for i in range(1, surveyRange+1): # i = 1 ~ surveyRange
         HotelList2 = json.dumps(HotelList, ensure_ascii = False)
             #time.sleep(1)
 #     print("saving dictBook...")
-    if os.path.exists('D:\\DATA\\data-grabTime-{}'.format(time.localtime()[1:4])) == False:
-        os.makedirs('D:\\DATA\\data-grabTime-{}'.format(time.localtime()[1:4]))
-    with open('D:\\DATA\\data-grabTime-{}\\BookingList-from-{}-to-{}.txt'.format(                           time.localtime()[1:4], timeList[i-1][0], timeList[i-1][1]), 'w', encoding = 'UTF-8') as f:
+    if os.path.exists('D:\\DATA\\data-grabTime-{}-adult-{}-room-{}'.format(time.localtime()[1:4], adultNumber, roomNumber)) == False:
+        os.makedirs('D:\\DATA\\data-grabTime-{}-adult-{}-room-{}'.format(time.localtime()[1:4], adultNumber, roomNumber))
+    with open('D:\\DATA\\data-grabTime-{}-adult-{}-room-{}\\BookingList-from-{}-to-{}.txt'.format(time.localtime()[1:4], adultNumber, roomNumber, timeList[i-1][0], timeList[i-1][1]), 'w', encoding = 'UTF-8') as f:
          f.write(HotelList2.strip('[').strip(']'))   
 print("Cost time: " + str(time.time()-start_time))
