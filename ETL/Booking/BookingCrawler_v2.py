@@ -10,10 +10,10 @@ import json
 start_time = time.time()
 
 # Settings
-surveyRange = 145
+surveyRange = 13
 travelPeriod = 1
 adultNumber = 2
-roomNumber = 1
+roomNumber = 2
 
 # Date List 
 # args: start date, survey range, travel period(days)
@@ -27,7 +27,7 @@ def getDateList(dt = date.today(), ran = surveyRange, period = travelPeriod):
         start = start + timedelta(days = 1)
         end = end + timedelta(days = 1) 
     return timeList
-timeList = getDateList(dt = date(2018, 8 ,9)) # from dt = date(2017, 12 ,31)
+timeList = getDateList(dt = date(2018, 11 ,18)) # from dt = date(2017, 12 ,31)
 
 # Date List components
 checkinM = []
