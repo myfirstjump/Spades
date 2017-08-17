@@ -19,11 +19,13 @@ head(data1)
 
 #ggplot
 dataUNI = data1[data1$ChiName == "京都四條烏丸UNIZO酒店",]
-g <- ggplot(dataUNI,aes(x=CheckOut,y=Price1Night))
+g <- ggplot(dataUNI[1:5,],aes(x=CheckOut,y=Price1Night))
 g + geom_col()
 ?geom_bar
 #outliner
 table(dataUNI$Price1Night)
 length(dataUNI$Price1Night)
+
+# lm ( Comment StarRate Score Price )
 
 
